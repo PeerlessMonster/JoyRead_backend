@@ -1,0 +1,20 @@
+services:
+  nacos:
+    image: nacos/nacos-server:v2.5.0
+    container_name: nacos
+    environment:
+      - MODE=standalone
+    volumes:
+      - dev-data:/home/nacos/log
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+    networks:
+      - dev-net
+    restart: on-failure
+
+volumes:
+  dev-data:
+
+networks:
+  dev-net:

@@ -1,0 +1,35 @@
+[versions]
+kotlin = "2.1.0"
+kotlinx = "1.8.1"
+jackson-kotlin = "2.18.2"
+reactor-kotlin = "1.2.3"
+reactor-test = "3.7.1"
+junit = "1.11.4"
+spring-boot = "3.4.1"
+spring-cloud = "2024.0.0"
+spring-cloud-alibaba = "2023.0.3.2"
+spring-doc = "2.8.3"
+
+[libraries]
+kotlin-reflect = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version = { ref = "kotlin" } }
+kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-reactor", version = { ref = "kotlinx" } }
+jackson-kotlin = { group = "com.fasterxml.jackson.module", name = "jackson-module-kotlin", version = { ref = "jackson-kotlin" } }
+reactor-kotlin = { group = "io.projectreactor.kotlin", name = "reactor-kotlin-extensions", version = { ref = "reactor-kotlin" } }
+reactor-test = { group = "io.projectreactor", name = "reactor-test", version = { ref = "reactor-test" } }
+kotlin-test-junit5 = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit5", version = { ref = "kotlin" } }
+spring-boot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version = { ref = "spring-boot" } }
+spring-boot-webflux = { group = "org.springframework.boot", name = "spring-boot-starter-webflux" }
+spring-boot-test = { group = "org.springframework.boot", name = "spring-boot-starter-test" }
+spring-cloud-dependencies = { group = "org.springframework.cloud", name = "spring-cloud-dependencies", version = { ref = "spring-cloud" } }
+spring-cloud-gateway = { group = "org.springframework.cloud", name = "spring-cloud-starter-gateway" }
+spring-cloud-loadbalancer = { group = "org.springframework.cloud", name = "spring-cloud-loadbalancer" }
+spring-cloud-alibaba-dependencies = { group = "com.alibaba.cloud", name = "spring-cloud-alibaba-dependencies", version = { ref = "spring-cloud-alibaba" } }
+spring-cloud-alibaba-nacos = { group = "com.alibaba.cloud", name = "spring-cloud-starter-alibaba-nacos-discovery" }
+spring-doc-webflux-api = { group = "org.springdoc", name = "springdoc-openapi-starter-webflux-api", version = { ref = "spring-doc" } }
+spring-doc-webflux-ui = { group = "org.springdoc", name = "springdoc-openapi-starter-webflux-ui", version = { ref = "spring-doc" } }
+junit = { group = "org.junit.platform", name = "junit-platform-launcher", version = { ref = "junit" } }
+
+[plugins]
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version = { ref = "kotlin" } }
+kotlin-spring = { id = "org.jetbrains.kotlin.plugin.spring", version = { ref = "kotlin" } }
+spring-boot = { id = "org.springframework.boot", version = { ref = "spring-boot" } }
