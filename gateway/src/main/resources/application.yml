@@ -20,6 +20,12 @@ spring:
             - Path=/users/v3/api-docs/**
           filters:
             - StripPrefix=1
+        - id: img
+          uri: http://localhost:9000
+          predicates:
+            - Path=/images/**
+          filters:
+            - StripPrefix=1
         - id: news
           uri: lb://news-service
           predicates:

@@ -38,3 +38,5 @@ out/
 
 ### Kotlin ###
 .kotlin
+
+data_dev/minio/**

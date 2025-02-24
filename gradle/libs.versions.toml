@@ -20,6 +20,7 @@ kotlin-test-junit5 = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit
 spring-boot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version = { ref = "spring-boot" } }
 spring-boot-webflux = { group = "org.springframework.boot", name = "spring-boot-starter-webflux" }
 spring-boot-test = { group = "org.springframework.boot", name = "spring-boot-starter-test" }
+mongodb-reactive = { group = "org.springframework.boot", name = "spring-boot-starter-data-mongodb-reactive" }
 spring-cloud-dependencies = { group = "org.springframework.cloud", name = "spring-cloud-dependencies", version = { ref = "spring-cloud" } }
 spring-cloud-gateway = { group = "org.springframework.cloud", name = "spring-cloud-starter-gateway" }
 spring-cloud-loadbalancer = { group = "org.springframework.cloud", name = "spring-cloud-loadbalancer" }

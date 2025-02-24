@@ -6,6 +6,19 @@ spring:
   cloud:
     nacos:
       server-addr: localhost:8848
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: news
+      username: mongoadmin
+      password: mongoadmin
+      authentication-database: admin
+  minio:
+    endpoint: http://localhost:9000
+    access-key: minioadmin
+    secret-key: minioadmin
+    bucket: news
 springdoc:
 #  api-docs:
 #    enabled: true

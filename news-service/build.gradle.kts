@@ -18,10 +18,12 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":common"))
     implementation(platform(libs.spring.cloud.alibaba.dependencies))
     implementation(libs.spring.cloud.alibaba.nacos)
     implementation(platform(libs.spring.cloud.dependencies))
     implementation(platform(libs.spring.boot.dependencies))
+    implementation(libs.mongodb.reactive)
     implementation(libs.spring.boot.webflux)
     implementation(libs.jackson.kotlin)
     implementation(libs.reactor.kotlin)
