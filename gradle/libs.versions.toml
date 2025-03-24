@@ -19,6 +19,7 @@ reactor-test = { group = "io.projectreactor", name = "reactor-test", version = {
 kotlin-test-junit5 = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit5", version = { ref = "kotlin" } }
 spring-boot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version = { ref = "spring-boot" } }
 spring-boot-webflux = { group = "org.springframework.boot", name = "spring-boot-starter-webflux" }
+spring-boot-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation" }
 spring-boot-test = { group = "org.springframework.boot", name = "spring-boot-starter-test" }
 mongodb-reactive = { group = "org.springframework.boot", name = "spring-boot-starter-data-mongodb-reactive" }
 spring-cloud-dependencies = { group = "org.springframework.cloud", name = "spring-cloud-dependencies", version = { ref = "spring-cloud" } }

@@ -4,7 +4,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRepositories
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = ["com.example.joyread.common", "com.example.joyread.news"])
 @EnableReactiveMongoRepositories
 class NewsApplication
 

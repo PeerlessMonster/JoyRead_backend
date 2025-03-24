@@ -24,6 +24,7 @@ dependencies {
     implementation(platform(libs.spring.cloud.dependencies))
     implementation(platform(libs.spring.boot.dependencies))
     implementation(libs.mongodb.reactive)
+    implementation(libs.spring.boot.validation)
     implementation(libs.spring.boot.webflux)
     implementation(libs.jackson.kotlin)
     implementation(libs.reactor.kotlin)
