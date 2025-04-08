@@ -9,7 +9,7 @@ import java.time.Instant
 data class NewsPO(
     @Id val id: String,
     val title: String,
-    @Field("publishTime") val publishUTC: Instant,
+    val publishTime: Instant,
     val source: String,
     val writers: List<String>,
     @Field("coverImg") val coverImgFilename: String,
@@ -25,7 +25,7 @@ abstract class Block(val type: BlockType) {
 
     data class HeadingBlock(
         val text: String,
-        val level: UShort
+        val level: UByte
     ) : ParagraphBlock(BlockType.HEADING)
 
     data class ImageBlock(

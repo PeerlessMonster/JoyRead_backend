@@ -4,7 +4,10 @@ import com.example.joyread.news.domain.po.NewsDetailPO
 import kotlinx.coroutines.flow.Flow
 import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.Repository
+import java.time.Instant
 
 interface NewsDetailRepository : Repository<NewsDetailPO, String> {
-    fun findByOrderByPublishUTCDesc(pageable: Pageable): Flow<NewsDetailPO>
+    fun findByOrderByPublishTimeDesc(pageable: Pageable): Flow<NewsDetailPO>
+
+    fun findByPublishTimeGreaterThanOrderByViewDesc(publishTime: Instant, pageable: Pageable): Flow<NewsDetailPO>
 }

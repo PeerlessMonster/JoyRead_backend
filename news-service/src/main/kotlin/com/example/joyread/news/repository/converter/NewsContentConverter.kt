@@ -25,7 +25,7 @@ class NewsContentConverter : Converter<Document, ParagraphBlock> {
                 val text = source.get("text") as String
                 val levelSource = source.get("level") as Int
 
-                val level = levelSource.toUShort()
+                val level = levelSource.toUByte()
                 HeadingBlock(text, level)
             }
 

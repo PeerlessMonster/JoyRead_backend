@@ -9,8 +9,9 @@ import java.time.Instant
 data class NewsDetailPO(
     @Id val id: String,
     val title: String,
-    @Field("publishTime") val publishUTC: Instant,
+    val publishTime: Instant,
     val source: String,
     val writers: List<String>,
-    @Field("coverImg") val coverImgFilename: String
+    @Field("coverImg") val coverImgFilename: String,
+    val view: UInt
 )
