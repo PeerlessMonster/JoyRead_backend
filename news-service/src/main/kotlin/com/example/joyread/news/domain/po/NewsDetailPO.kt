@@ -10,8 +10,8 @@ data class NewsDetailPO(
     @Id val id: String,
     val title: String,
     val publishTime: Instant,
+    val view: UInt,
     val source: String,
     val writers: List<String>,
-    @Field("coverImg") val coverImgFilename: String,
-    val view: UInt
+    @Field("coverImg") val coverImgFilename: String
 )

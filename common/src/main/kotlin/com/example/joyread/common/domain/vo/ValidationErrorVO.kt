@@ -1,14 +1,9 @@
 package com.example.joyread.common.domain.vo
 
-open class ErrorVO(
-    val message: String
-)
+import com.fasterxml.jackson.annotation.JsonInclude
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 class ValidationErrorVO(
-    val field: String,
-    message: String
-) : ErrorVO(message) {
-    companion object {
-        fun default() = ErrorVO("服务器不理解客户端的请求，未做任何处理。")
-    }
-}
+    message: String,
+    val field: String? = null,
+) : ErrorVO(message)

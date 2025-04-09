@@ -12,7 +12,7 @@ import org.springframework.web.method.annotation.HandlerMethodValidationExceptio
 class GlobalExceptionHandler {
     @ExceptionHandler(IllegalStateException::class)
     fun handleRequestParamNullException(e: IllegalStateException) =
-        ResponseEntity.badRequest().body(ErrorVO("请求参数不能为空"))
+        ResponseEntity.badRequest().body(ValidationErrorVO("请求参数不能为空"))
 
     @ExceptionHandler(HandlerMethodValidationException::class)
     suspend fun handleRequestParamInvalidException(e: HandlerMethodValidationException): ResponseEntity<ErrorVO> {
@@ -29,8 +29,10 @@ class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(
             if (parameterName != null && message != null) {
                 ValidationErrorVO(parameterName, message)
+            } else if (parameterName != null) {
+                ValidationErrorVO(parameterName, "格式错误")
             } else {
-                ValidationErrorVO.default()
+                ErrorVO()
             }
         )
     }
@@ -45,8 +47,10 @@ class GlobalExceptionHandler {
         return ResponseEntity.badRequest().body(
             if (fieldName != null && message != null) {
                 ValidationErrorVO(fieldName, message)
+            } else if (fieldName != null) {
+                ValidationErrorVO(fieldName, "格式错误")
             } else {
-                ValidationErrorVO.default()
+                ErrorVO()
             }
         )
     }

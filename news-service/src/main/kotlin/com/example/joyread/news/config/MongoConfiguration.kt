@@ -1,6 +1,6 @@
 package com.example.joyread.news.config
 
-import com.example.joyread.news.repository.converter.NewsContentConverter
+import com.example.joyread.news.converter.NewsContentConverter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.data.mongodb.core.convert.MongoCustomConversions

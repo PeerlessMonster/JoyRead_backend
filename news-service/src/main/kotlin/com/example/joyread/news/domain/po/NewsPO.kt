@@ -1,5 +1,6 @@
 package com.example.joyread.news.domain.po
 
+import com.fasterxml.jackson.annotation.JsonInclude
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 import org.springframework.data.mongodb.core.mapping.Field
@@ -10,6 +11,7 @@ data class NewsPO(
     @Id val id: String,
     val title: String,
     val publishTime: Instant,
+    val view: UInt,
     val source: String,
     val writers: List<String>,
     @Field("coverImg") val coverImgFilename: String,
@@ -17,7 +19,7 @@ data class NewsPO(
 )
 
 enum class BlockType {
-    HEADING, IMAGE, IMAGE_DESCRIPTION, CONTEXT, QUOTE, BODY, SPAN
+    HEADING, IMAGE, ANNOTATION, CONTEXT, QUOTE, BODY, LEADING, SPAN
 }
 
 abstract class Block(val type: BlockType) {
@@ -32,9 +34,9 @@ abstract class Block(val type: BlockType) {
         val filename: String,
     ) : ParagraphBlock(BlockType.IMAGE)
 
-    data class ImageDescriptionBlock(
+    data class AnnotationBlock(
         val spans: List<SpanBlock>
-    ) : ParagraphBlock(BlockType.IMAGE_DESCRIPTION)
+    ) : ParagraphBlock(BlockType.ANNOTATION)
 
     data class ContextBlock(
         val paragraphs: List<ParagraphBlock>
@@ -44,9 +46,16 @@ abstract class Block(val type: BlockType) {
         val paragraphs: List<ParagraphBlock>
     ) : ParagraphBlock(BlockType.QUOTE)
 
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     data class BodyBlock(
-        val spans: List<SpanBlock>
+        val spans: List<SpanBlock>,
+        val leading: LeadingBlock? = null
     ) : ParagraphBlock(BlockType.BODY)
+
+    data class LeadingBlock(
+        val text: String,
+        val style: LeadingStyle
+    ) : Block(BlockType.LEADING)
 
     data class SpanBlock(
         val text: String,
@@ -54,6 +63,10 @@ abstract class Block(val type: BlockType) {
     ) : Block(BlockType.SPAN)
 }
 
+enum class LeadingStyle {
+    SIGN, ORDER
+}
+
 enum class SpanStyle {
-    SIGN, ORDER, NORMAL, BOLD, ITALIC, COLORED
+    NORMAL, BOLD, ITALIC, COLORED, BOLD_COLORED, ITALIC_BOLD
 }

@@ -13,4 +13,4 @@ fun NewsDetailPO.asLatestNewsVO() = LatestNewsVO(id, title, publishTime.toEpochM
 fun NewsDetailPO.asPopularNewsVO() = PopularNewsVO(id, title)
 
 fun NewsPO.asNewsVO(amendContent: List<ParagraphBlock>? = null) =
-    NewsVO(title, publishTime.toEpochMilliStr(), source, writers, amendContent ?: content)
+    NewsVO(title, publishTime.toEpochMilliStr(), view, source, writers, amendContent ?: content)
