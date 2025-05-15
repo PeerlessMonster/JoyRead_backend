@@ -1,7 +1,7 @@
 package com.example.joyread.news.service
 
-import com.example.joyread.news.domain.vo.LatestNewsVO
-import com.example.joyread.news.domain.vo.PopularNewsVO
+import com.example.joyread.news.domain.vo.NewsDetailVO
+import com.example.joyread.common.domain.vo.NewsTitleVO
 import com.example.joyread.news.repository.NewsDetailRepository
 import com.example.joyread.news.util.asLatestNewsVO
 import com.example.joyread.news.util.asPopularNewsVO
@@ -13,26 +13,26 @@ import java.time.Instant
 class NewsDetailService(
     private val newsDetailRepository: NewsDetailRepository
 ) {
-    suspend fun latest(pageOrder: Int, pageSize: Int): List<LatestNewsVO> {
+    suspend fun latest(pageOrder: Int, pageSize: Int): List<NewsDetailVO> {
         val page = PageRequest.of(pageOrder, pageSize)
 
-        val latestNewsVOs = mutableListOf<LatestNewsVO>()
+        val newsDetailVOs = mutableListOf<NewsDetailVO>()
         newsDetailRepository.findByOrderByPublishTimeDesc(page).collect { newsDetailPO ->
             val latestNewsVO = newsDetailPO.asLatestNewsVO()
-            latestNewsVOs.add(latestNewsVO)
+            newsDetailVOs.add(latestNewsVO)
         }
-        return latestNewsVOs
+        return newsDetailVOs
     }
 
-    suspend fun popular(startTime: Instant, pageOrder: Int, pageSize: Int): List<PopularNewsVO> {
+    suspend fun popular(startTime: Instant, pageOrder: Int, pageSize: Int): List<NewsTitleVO> {
         val page = PageRequest.of(pageOrder, pageSize)
 
-        val popularNewsVOs = mutableListOf<PopularNewsVO>()
+        val newsTitleVOs = mutableListOf<NewsTitleVO>()
         newsDetailRepository.findByPublishTimeGreaterThanOrderByViewDesc(startTime, page)
             .collect { newsDetailPO ->
                 val popularNewsVO = newsDetailPO.asPopularNewsVO()
-                popularNewsVOs.add(popularNewsVO)
+                newsTitleVOs.add(popularNewsVO)
             }
-        return popularNewsVOs
+        return newsTitleVOs
     }
 }

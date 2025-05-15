@@ -20,6 +20,12 @@ spring:
             - Path=/users/v3/api-docs/**
           filters:
             - StripPrefix=1
+        - id: docs_assistant
+          uri: lb://assistant-service
+          predicates:
+            - Path=/assistant/v3/api-docs/**
+          filters:
+            - StripPrefix=1
         - id: img
           uri: http://localhost:9000
           predicates:
@@ -34,6 +40,10 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/users/**
+        - id: assistant
+          uri: lb://assistant-service
+          predicates:
+            - Path=/assistant/**
 #      globalcors:
 #        add-to-simple-url-handler-mapping: true
 #        corsConfigurations:

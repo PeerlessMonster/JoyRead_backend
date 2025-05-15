@@ -1,6 +1,6 @@
 package com.example.joyread.news.domain.vo
 
-data class LatestNewsVO(
+data class NewsDetailVO(
     val id: String,
     val title: String,
     val publishUTCEpochMilli: String,

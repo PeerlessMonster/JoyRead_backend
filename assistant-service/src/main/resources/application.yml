@@ -1,0 +1,15 @@
+server:
+  port: 8085
+spring:
+  application:
+    name: assistant-service
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+  ai:
+    base-url: http://localhost/v1
+    api-key: app-************************
+springdoc:
+#  api-docs:
+#    enabled: true
+  packages-to-scan: com.example.joyread.assistant.controller

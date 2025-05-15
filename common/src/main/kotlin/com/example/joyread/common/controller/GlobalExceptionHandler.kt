@@ -7,12 +7,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
 import org.springframework.web.bind.support.WebExchangeBindException
 import org.springframework.web.method.annotation.HandlerMethodValidationException
+import org.springframework.web.server.MissingRequestValueException
 
 @RestControllerAdvice
 class GlobalExceptionHandler {
-    @ExceptionHandler(IllegalStateException::class)
-    fun handleRequestParamNullException(e: IllegalStateException) =
-        ResponseEntity.badRequest().body(ValidationErrorVO("请求参数不能为空"))
+    @ExceptionHandler(MissingRequestValueException::class)
+    suspend fun handleMissingRequestParamException(e: MissingRequestValueException): ResponseEntity<ErrorVO> {
+        val name = e.name
+
+//        val label = e.label
+//        val type = e.type
+
+        return ResponseEntity.badRequest().body(ValidationErrorVO(name, "请求参数不能为空"))
+    }
 
     @ExceptionHandler(HandlerMethodValidationException::class)
     suspend fun handleRequestParamInvalidException(e: HandlerMethodValidationException): ResponseEntity<ErrorVO> {
@@ -38,7 +45,7 @@ class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(WebExchangeBindException::class)
-    suspend fun handleWebExchangeBindException(e: WebExchangeBindException): ResponseEntity<ErrorVO> {
+    suspend fun handleRequestBodyFieldInvalidException(e: WebExchangeBindException): ResponseEntity<ErrorVO> {
         val fieldError = e.fieldError
 
         val fieldName = fieldError?.field
