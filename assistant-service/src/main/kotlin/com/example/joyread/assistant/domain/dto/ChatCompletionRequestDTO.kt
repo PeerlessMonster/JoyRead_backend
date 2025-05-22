@@ -8,18 +8,22 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)
 @JsonSerialize(nullsUsing = NullObjectSerializer::class)
 class ChatCompletionRequestDTO(
-    val user: String,
+    val inputs: Inputs?,
     val query: String,
-
-    docId: String? = null
+    val responseMode: String,
+    val user: String
 ) {
-    val inputs = if (docId == null) {
-        null
-    } else {
-        Inputs(docId)
-    }
+    companion object {
+        fun streaming(user: String, query: String, docId: String? = null): ChatCompletionRequestDTO {
+            val inputs = if (docId == null) {
+                null
+            } else {
+                Inputs(docId)
+            }
 
-    val responseMode = "streaming"
+            return ChatCompletionRequestDTO(inputs, query, "streaming", user)
+        }
+    }
 }
 
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy::class)

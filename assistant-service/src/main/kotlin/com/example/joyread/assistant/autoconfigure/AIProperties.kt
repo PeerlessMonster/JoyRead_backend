@@ -4,6 +4,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 
 @ConfigurationProperties(prefix = "spring.ai")
 data class AIProperties(
-    val baseUrl: String,
+    val baseURL: String,
     val apiKey: String
 )

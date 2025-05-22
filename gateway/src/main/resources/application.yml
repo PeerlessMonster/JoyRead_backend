@@ -69,3 +69,5 @@ springdoc:
         url: /news/v3/api-docs
       - name: user-service
         url: /users/v3/api-docs
+      - name: assistant-service
+        url: /assistant/v3/api-docs

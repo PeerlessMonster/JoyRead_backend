@@ -6,7 +6,7 @@ enum class ChunkAssistantAnswerEvent {
     SOURCE, ANSWER
 }
 
-abstract class ChunkAssistantAnswerVO(
+sealed class ChunkAssistantAnswerVO(
     val event: ChunkAssistantAnswerEvent
 )
 

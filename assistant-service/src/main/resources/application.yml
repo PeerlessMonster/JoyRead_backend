@@ -1,5 +1,5 @@
 server:
-  port: 8085
+  port: 8084
 spring:
   application:
     name: assistant-service
@@ -7,8 +7,8 @@ spring:
     nacos:
       server-addr: localhost:8848
   ai:
-    base-url: http://localhost/v1
-    api-key: app-************************
+    Base-URL: http://localhost/v1
+    API-Key: app-************************
 springdoc:
 #  api-docs:
 #    enabled: true

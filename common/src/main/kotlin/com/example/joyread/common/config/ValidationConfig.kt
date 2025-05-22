@@ -8,11 +8,13 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.validation.beanvalidation.MethodValidationPostProcessor
 
 @Configuration
-class ValidationConfiguration {
+class ValidationConfig {
     @Bean
     fun validator(): Validator {
-        val validatorFactory =
-            Validation.byProvider(HibernateValidator::class.java).configure().failFast(true).buildValidatorFactory()
+        val validatorFactory = Validation.byProvider(HibernateValidator::class.java)
+            .configure()
+            .failFast(true)
+            .buildValidatorFactory()
         return validatorFactory.validator
     }
 

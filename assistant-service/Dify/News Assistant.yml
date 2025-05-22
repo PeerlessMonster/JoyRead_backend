@@ -71,19 +71,6 @@ workflow:
     - data:
         isInIteration: false
         isInLoop: false
-        sourceType: start
-        targetType: question-classifier
-      id: 1744894973507-source-1745285617905-target
-      selected: false
-      source: '1744894973507'
-      sourceHandle: source
-      target: '1745285617905'
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
-        isInIteration: false
-        isInLoop: false
         sourceType: question-classifier
         targetType: parameter-extractor
       id: 1745285617905-2-1745286036447-target
@@ -206,18 +193,6 @@ workflow:
       source: '1745288959483'
       sourceHandle: source
       target: '1745302923518'
-      targetHandle: target
-      type: custom
-      zIndex: 0
-    - data:
-        isInLoop: false
-        sourceType: knowledge-retrieval
-        targetType: llm
-      id: 1745302056645-source-1745289429376-target
-      selected: false
-      source: '1745302056645'
-      sourceHandle: source
-      target: '1745289429376'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -378,6 +353,7 @@ workflow:
         sourceType: llm
         targetType: answer
       id: 1745302102013-source-1747376352346-target
+      selected: false
       source: '1745302102013'
       sourceHandle: source
       target: '1747376352346'
@@ -390,9 +366,115 @@ workflow:
         sourceType: llm
         targetType: answer
       id: 1745305181473-source-1747376395544-target
+      selected: false
       source: '1745305181473'
       sourceHandle: source
       target: '1747376395544'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: if-else
+      id: 1744894973507-source-1747456528771-target
+      selected: false
+      source: '1744894973507'
+      sourceHandle: source
+      target: '1747456528771'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: question-classifier
+      id: 1747456528771-true-1745285617905-target
+      selected: false
+      source: '1747456528771'
+      sourceHandle: 'true'
+      target: '1745285617905'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: if-else
+        targetType: question-classifier
+      id: 1747456528771-false-1747456570679-target
+      selected: false
+      source: '1747456528771'
+      sourceHandle: 'false'
+      target: '1747456570679'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: knowledge-retrieval
+      id: 1747456570679-1-1747456799582-target
+      selected: false
+      source: '1747456570679'
+      sourceHandle: '1'
+      target: '1747456799582'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1747456799582-source-1745289429376-target
+      selected: false
+      source: '1747456799582'
+      sourceHandle: source
+      target: '1745289429376'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: knowledge-retrieval
+        targetType: llm
+      id: 1745302056645-source-17478426210820-target
+      source: '1745302056645'
+      sourceHandle: source
+      target: '17478426210820'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17478426210820-source-17478426552260-target
+      source: '17478426210820'
+      sourceHandle: source
+      target: '17478426552260'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: question-classifier
+        targetType: llm
+      id: 1747456570679-2-17484509086070-target
+      source: '1747456570679'
+      sourceHandle: '2'
+      target: '17484509086070'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: answer
+      id: 17484509086070-source-17484509387050-target
+      source: '17484509086070'
+      sourceHandle: source
+      target: '17484509387050'
       targetHandle: target
       type: custom
       zIndex: 0
@@ -402,15 +484,21 @@ workflow:
         selected: false
         title: 开始
         type: start
-        variables: []
-      height: 54
+        variables:
+        - label: doc_id
+          max_length: 24
+          options: []
+          required: false
+          type: text-input
+          variable: doc_id
+      height: 90
       id: '1744894973507'
       position:
-        x: 10.528326375747298
-        y: 581.8926992842311
+        x: -239.48472940352417
+        y: 534.6505061914186
       positionAbsolute:
-        x: 10.528326375747298
-        y: 581.8926992842311
+        x: -239.48472940352417
+        y: 534.6505061914186
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -433,7 +521,8 @@ workflow:
         instructions: ''
         model:
           completion_params:
-            temperature: 0.7
+            temperature: 0
+            top_p: 0
           mode: chat
           name: qwen2.5-7b-instruct-1m
           provider: langgenius/openai_api_compatible/openai_api_compatible
@@ -450,10 +539,10 @@ workflow:
       id: '1745285617905'
       position:
         x: 308.3763529501915
-        y: 359.9374937291611
+        y: 425.59497502104745
       positionAbsolute:
         x: 308.3763529501915
-        y: 359.9374937291611
+        y: 425.59497502104745
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -464,7 +553,8 @@ workflow:
         instruction: 如果用户询问最新资讯但未给出具体数量，则取5
         model:
           completion_params:
-            temperature: 0.7
+            temperature: 0
+            top_p: 0
           mode: chat
           name: qwen2.5-7b-instruct-1m
           provider: langgenius/openai_api_compatible/openai_api_compatible
@@ -486,11 +576,11 @@ workflow:
       height: 90
       id: '1745286036447'
       position:
-        x: 638
-        y: 479.07142857142856
+        x: 596.4176243124448
+        y: 563.0430529806877
       positionAbsolute:
-        x: 638
-        y: 479.07142857142856
+        x: 596.4176243124448
+        y: 563.0430529806877
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -523,11 +613,11 @@ workflow:
       height: 136
       id: '1745286163667'
       position:
-        x: 956.0742965464767
-        y: 450.1136587059309
+        x: 882.6334872364594
+        y: 519.8903800750275
       positionAbsolute:
-        x: 956.0742965464767
-        y: 450.1136587059309
+        x: 882.6334872364594
+        y: 519.8903800750275
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -538,7 +628,8 @@ workflow:
         instruction: 如果用户询问今日最热门资讯但未给出数量，则取10
         model:
           completion_params:
-            temperature: 0.7
+            temperature: 0
+            top_p: 0
           mode: chat
           name: qwen2.5-7b-instruct-1m
           provider: langgenius/openai_api_compatible/openai_api_compatible
@@ -560,11 +651,11 @@ workflow:
       height: 90
       id: '1745288770549'
       position:
-        x: 651.2071501767463
-        y: 642.8787964506284
+        x: 604.9680722421328
+        y: 728.0065491105402
       positionAbsolute:
-        x: 651.2071501767463
-        y: 642.8787964506284
+        x: 604.9680722421328
+        y: 728.0065491105402
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -597,11 +688,11 @@ workflow:
       height: 136
       id: '1745288825892'
       position:
-        x: 932.2571595591776
-        y: 632.8373951666482
+        x: 906.5873622358984
+        y: 691.4659048154235
       positionAbsolute:
-        x: 932.2571595591776
-        y: 632.8373951666482
+        x: 906.5873622358984
+        y: 691.4659048154235
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -612,7 +703,8 @@ workflow:
         instruction: 如果用户询问本周最热门资讯但未给出数量，则取10
         model:
           completion_params:
-            temperature: 0.7
+            temperature: 0
+            top_p: 0
           mode: chat
           name: qwen2.5-7b-instruct-1m
           provider: langgenius/openai_api_compatible/openai_api_compatible
@@ -634,11 +726,11 @@ workflow:
       height: 90
       id: '1745288929413'
       position:
-        x: 607.9769217119787
-        y: 800.8475945329747
+        x: 578.0319004238555
+        y: 878.4063829949678
       positionAbsolute:
-        x: 607.9769217119787
-        y: 800.8475945329747
+        x: 578.0319004238555
+        y: 878.4063829949678
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -671,11 +763,11 @@ workflow:
       height: 136
       id: '1745288959483'
       position:
-        x: 969.3897075353941
-        y: 809.8503170639103
+        x: 935.169462282427
+        y: 878.4063829949678
       positionAbsolute:
-        x: 969.3897075353941
-        y: 809.8503170639103
+        x: 935.169462282427
+        y: 878.4063829949678
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -685,7 +777,7 @@ workflow:
         context:
           enabled: true
           variable_selector:
-          - '1745302056645'
+          - '1747456799582'
           - result
         desc: ''
         memory:
@@ -716,11 +808,11 @@ workflow:
       height: 90
       id: '1745289429376'
       position:
-        x: 2495.0984655749944
-        y: 537.6257102538028
+        x: 2726.668313852459
+        y: 375.10794036324893
       positionAbsolute:
-        x: 2495.0984655749944
-        y: 537.6257102538028
+        x: 2726.668313852459
+        y: 375.10794036324893
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -759,11 +851,11 @@ workflow:
       height: 92
       id: '1745302056645'
       position:
-        x: 2110.8453558829337
-        y: 284.87979800910784
+        x: 2205.3719175745578
+        y: 419.54629126676775
       positionAbsolute:
-        x: 2110.8453558829337
-        y: 284.87979800910784
+        x: 2205.3719175745578
+        y: 419.54629126676775
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -804,11 +896,11 @@ workflow:
       height: 90
       id: '1745302102013'
       position:
-        x: 2513.710841642748
-        y: 696.299050561716
+        x: 2795.644343509807
+        y: 691.4659048154235
       positionAbsolute:
-        x: 2513.710841642748
-        y: 696.299050561716
+        x: 2795.644343509807
+        y: 691.4659048154235
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -824,11 +916,11 @@ workflow:
       height: 105
       id: '1745302320814'
       position:
-        x: 2815.5809718682713
-        y: 495.039302791508
+        x: 3099.4624822724168
+        y: 353.84555944916417
       positionAbsolute:
-        x: 2815.5809718682713
-        y: 495.039302791508
+        x: 3099.4624822724168
+        y: 353.84555944916417
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -841,10 +933,12 @@ workflow:
         - id: '2'
           name: 用户不只是询问资讯是哪些、有哪些，还要求对资讯作进一步分析，如概括、总结共同点、比对差异等
         desc: ''
+        instruction: 你是内置在一款资讯阅读App的AI，这款App的中文名叫“愉阅”、英文名“JoyRead”，而你的名字叫“小悦”。
         instructions: ''
         model:
           completion_params:
-            temperature: 0.7
+            temperature: 0
+            top_p: 0
           mode: chat
           name: qwen2.5-7b-instruct-1m
           provider: langgenius/openai_api_compatible/openai_api_compatible
@@ -860,11 +954,11 @@ workflow:
       height: 220
       id: '1745302494785'
       position:
-        x: 1542.4710347041364
-        y: 705.0777833843781
+        x: 1502.4711204725536
+        y: 709.5222182989984
       positionAbsolute:
-        x: 1542.4710347041364
-        y: 705.0777833843781
+        x: 1502.4711204725536
+        y: 709.5222182989984
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -899,11 +993,11 @@ workflow:
       height: 152
       id: '1745302923518'
       position:
-        x: 1259.4581073794643
-        y: 581.8926992842311
+        x: 1207.1217005684632
+        y: 686.4254539511636
       positionAbsolute:
-        x: 1259.4581073794643
-        y: 581.8926992842311
+        x: 1207.1217005684632
+        y: 686.4254539511636
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -942,11 +1036,11 @@ workflow:
       height: 90
       id: '1745305181473'
       position:
-        x: 2495.0984655749944
-        y: 354.30816655015707
+        x: 2785.028430854039
+        y: 184.79388536541882
       positionAbsolute:
-        x: 2495.0984655749944
-        y: 354.30816655015707
+        x: 2785.028430854039
+        y: 184.79388536541882
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -1001,6 +1095,7 @@ workflow:
         x: 2099.272352523686
         y: 649.8926992842311
       selectable: false
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom-iteration-start
@@ -1111,11 +1206,11 @@ workflow:
       height: 54
       id: '1747272934532'
       position:
-        x: 1816.7021470464026
-        y: 883.0634227547988
+        x: 1780.8035342808173
+        y: 818.709432646886
       positionAbsolute:
-        x: 1816.7021470464026
-        y: 883.0634227547988
+        x: 1780.8035342808173
+        y: 818.709432646886
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -1163,11 +1258,11 @@ workflow:
       height: 222
       id: '1747295548920'
       position:
-        x: 2124.4550318324045
-        y: 823.0172661787562
+        x: 2048.349972769364
+        y: 834.5048222637436
       positionAbsolute:
-        x: 2124.4550318324045
-        y: 823.0172661787562
+        x: 2048.349972769364
+        y: 834.5048222637436
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -1183,12 +1278,12 @@ workflow:
       height: 121
       id: '1747295659836'
       position:
-        x: 2794.449822594341
-        y: 776.9976355343222
+        x: 3076.3833244614
+        y: 772.1644897880296
       positionAbsolute:
-        x: 2794.449822594341
-        y: 776.9976355343222
-      selected: true
+        x: 3076.3833244614
+        y: 772.1644897880296
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -1203,12 +1298,12 @@ workflow:
       height: 121
       id: '1747295953408'
       position:
-        x: 2794.449822594341
-        y: 916.4685628254639
+        x: 3076.3833244614
+        y: 911.6354170791715
       positionAbsolute:
-        x: 2794.449822594341
-        y: 916.4685628254639
-      selected: true
+        x: 3076.3833244614
+        y: 911.6354170791715
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -1223,12 +1318,12 @@ workflow:
       height: 121
       id: '1747296024017'
       position:
-        x: 2794.449822594341
-        y: 1051.1896732393504
+        x: 3076.3833244614
+        y: 1046.356527493058
       positionAbsolute:
-        x: 2794.449822594341
-        y: 1051.1896732393504
-      selected: true
+        x: 3076.3833244614
+        y: 1046.356527493058
+      selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
@@ -1243,11 +1338,11 @@ workflow:
       height: 105
       id: '1747376352346'
       position:
-        x: 2833.556970316777
-        y: 642.8787964506284
+        x: 3115.490472183836
+        y: 638.0456507043359
       positionAbsolute:
-        x: 2833.556970316777
-        y: 642.8787964506284
+        x: 3115.490472183836
+        y: 638.0456507043359
       selected: false
       sourcePosition: right
       targetPosition: left
@@ -1256,24 +1351,267 @@ workflow:
     - data:
         answer: '{{#1745305181473.text#}}'
         desc: ''
-        selected: true
+        selected: false
         title: 直接回复 6
         type: answer
         variables: []
       height: 105
       id: '1747376395544'
       position:
-        x: 2799.0984655749944
-        y: 354.30816655015707
+        x: 3090.7720101274854
+        y: 209.21840613364043
       positionAbsolute:
-        x: 2799.0984655749944
-        y: 354.30816655015707
+        x: 3090.7720101274854
+        y: 209.21840613364043
       selected: false
       sourcePosition: right
       targetPosition: left
       type: custom
       width: 244
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: empty
+            id: 42db1c80-0d59-4830-a95b-015a4b267c69
+            value: ''
+            varType: string
+            variable_selector:
+            - '1744894973507'
+            - doc_id
+          id: 'true'
+          logical_operator: and
+        desc: ''
+        selected: false
+        title: 条件分支 2
+        type: if-else
+      height: 126
+      id: '1747456528771'
+      position:
+        x: 27.837943415704956
+        y: 414.2824726764179
+      positionAbsolute:
+        x: 27.837943415704956
+        y: 414.2824726764179
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        classes:
+        - id: '1'
+          name: 用户询问无关问题
+        - id: '2'
+          name: 用户向你问好、寒暄，对你的回答表示感谢等情感方面的简单回应；或用户不了解该App如何使用向你询问功能等；或用户询问你的身份，询问你可以做什么，让你介绍自己
+        desc: ''
+        instruction: 你是内置在一款资讯阅读App的AI，这款App的中文名叫“愉阅”、英文名“JoyRead”，而你的名字叫“小悦”。
+        instructions: ''
+        model:
+          completion_params:
+            temperature: 0
+            top_p: 0
+          mode: chat
+          name: qwen2.5-7b-instruct-1m
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        query_variable_selector:
+        - '1744894973507'
+        - sys.query
+        selected: false
+        title: 问题分类器 3
+        topics: []
+        type: question-classifier
+        vision:
+          enabled: false
+      height: 236
+      id: '1747456570679'
+      position:
+        x: 308.3763529501915
+        y: 148.53277395840837
+      positionAbsolute:
+        x: 308.3763529501915
+        y: 148.53277395840837
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        dataset_ids:
+        - IAahFGBbV7A+NKQzyJy0qYyEjqGfVD5R/LQZYA7FDCYTY1szVZDQJOvfToQNBBYo
+        desc: ''
+        metadata_filtering_conditions:
+          conditions:
+          - comparison_operator: is
+            id: 6a570dd7-ac64-4838-bcc3-1d1c80aa82a6
+            name: id
+            value: '{{#1744894973507.doc_id#}}'
+          logical_operator: and
+        metadata_filtering_mode: manual
+        multiple_retrieval_config:
+          reranking_enable: false
+          reranking_mode: weighted_score
+          reranking_model:
+            model: ''
+            provider: ''
+          score_threshold: null
+          top_k: 4
+          weights:
+            keyword_setting:
+              keyword_weight: 0
+            vector_setting:
+              embedding_model_name: nomic-embed-text-v1.5
+              embedding_provider_name: langgenius/openai_api_compatible/openai_api_compatible
+              vector_weight: 1
+        query_variable_selector:
+        - conversation
+        - blank
+        retrieval_mode: multiple
+        selected: false
+        title: 知识检索 3
+        type: knowledge-retrieval
+      height: 92
+      id: '1747456799582'
+      position:
+        x: 2211.816111902948
+        y: 264.3681891825728
+      positionAbsolute:
+        x: 2211.816111902948
+        y: 264.3681891825728
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1745302056645'
+          - result
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen2.5-7b-instruct-1m
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: b5449a62-9235-4f9e-aef2-2628a81b8436
+          role: system
+          text: '用户询问的所有问题，你不能凭空捏造，而是以 {{#context#}} 作出事实依据回答用户。
+
+            以用户询问的语言进行回答。'
+        selected: false
+        title: LLM (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17478426210820'
+      position:
+        x: 2726.668313852459
+        y: 473.5518539786467
+      positionAbsolute:
+        x: 2726.668313852459
+        y: 473.5518539786467
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17478426210820.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 (1)
+        type: answer
+        variables: []
+      height: 105
+      id: '17478426552260'
+      position:
+        x: 3090.7720101274854
+        y: 491.0839308124247
+      positionAbsolute:
+        x: 3090.7720101274854
+        y: 491.0839308124247
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        memory:
+          query_prompt_template: '{{#sys.query#}}'
+          role_prefix:
+            assistant: ''
+            user: ''
+          window:
+            enabled: false
+            size: 50
+        model:
+          completion_params: {}
+          mode: chat
+          name: qwen2.5-7b-instruct-1m
+          provider: langgenius/openai_api_compatible/openai_api_compatible
+        prompt_template:
+        - id: 46018830-9aaf-4be3-a020-ba8a2bdc4f1c
+          role: system
+          text: '你是内置在一款资讯阅读App的AI，这款App的中文名叫“愉阅”、英文名“JoyRead”，而你的名字叫“小悦”。
+
+            以用户询问的语言进行回答。'
+        selected: false
+        title: LLM 3 (1)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 90
+      id: '17484509086070'
+      position:
+        x: 2785.028430854039
+        y: 84.82792032856639
+      positionAbsolute:
+        x: 2785.028430854039
+        y: 84.82792032856639
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        answer: '{{#17484509086070.text#}}'
+        desc: ''
+        selected: false
+        title: 直接回复 6 (1)
+        type: answer
+        variables: []
+      height: 105
+      id: '17484509387050'
+      position:
+        x: 3076.3833244614
+        y: 84.82792032856639
+      positionAbsolute:
+        x: 3076.3833244614
+        y: 84.82792032856639
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
     viewport:
-      x: 54.47288837910935
-      y: 99.74863192942735
-      zoom: 0.4334687817573477
+      x: 128.74028221011258
+      y: 144.14822425004286
+      zoom: 0.5133447728600087
