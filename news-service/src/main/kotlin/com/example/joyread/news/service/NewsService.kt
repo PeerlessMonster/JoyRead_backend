@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service
 class NewsService(
     private val newsRepository: NewsRepository
 ) {
-    suspend fun content(id: String) = newsRepository.findById(id)?.let { newsPO ->
+    suspend fun read(id: String) = newsRepository.findById(id)?.let { newsPO ->
         val coverImageBlock = ImageBlock(newsPO.coverImgFilename)
 
         val amendContent = newsPO.content.toMutableList()

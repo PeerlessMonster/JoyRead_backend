@@ -1,6 +1,7 @@
 package com.example.joyread.news.controller
 
 import com.example.joyread.common.constant.HTTPMediaTypeValue
+import com.example.joyread.common.domain.dto.NewsDetailDTO
 import com.example.joyread.news.domain.vo.NewsDetailVO
 import com.example.joyread.news.domain.vo.NewsVO
 import com.example.joyread.common.domain.vo.NewsTitleVO
@@ -55,11 +56,23 @@ class NewsController(
         return ResponseEntity.ok(newsList)
     }
 
+    @GetMapping("/{id}/detail")
+    suspend fun getNewsDetail(
+        @PathVariable("id") @Length(min = 24, max = 24, message = "须符合 ObjectId 格式") id: String
+    ): ResponseEntity<NewsDetailDTO> {
+        val news = newsDetailService.read(id)
+        return if (news != null) {
+            ResponseEntity.ok(news)
+        } else {
+            ResponseEntity.notFound().build<NewsDetailDTO>()
+        }
+    }
+
     @GetMapping("/{id}")
     suspend fun getNews(
         @PathVariable("id") @Length(min = 24, max = 24, message = "须符合 ObjectId 格式") id: String
     ): ResponseEntity<NewsVO> {
-        val news = newsService.content(id)
+        val news = newsService.read(id)
         return if (news != null) {
             ResponseEntity.ok(news)
         } else {

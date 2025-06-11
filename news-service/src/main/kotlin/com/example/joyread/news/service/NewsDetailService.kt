@@ -5,6 +5,7 @@ import com.example.joyread.common.domain.vo.NewsTitleVO
 import com.example.joyread.news.repository.NewsDetailRepository
 import com.example.joyread.news.util.asLatestNewsVO
 import com.example.joyread.news.util.asPopularNewsVO
+import com.example.joyread.news.util.asNewsDetailDTO
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Service
 import java.time.Instant
@@ -13,6 +14,8 @@ import java.time.Instant
 class NewsDetailService(
     private val newsDetailRepository: NewsDetailRepository
 ) {
+    suspend fun read(id: String) = newsDetailRepository.findById(id)?.asNewsDetailDTO()
+
     suspend fun latest(pageOrder: Int, pageSize: Int): List<NewsDetailVO> {
         val page = PageRequest.of(pageOrder, pageSize)
 

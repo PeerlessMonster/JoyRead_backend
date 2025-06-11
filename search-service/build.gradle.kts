@@ -5,12 +5,10 @@ plugins {
 }
 
 group = "com.example.joyread"
-version = "0.0.1-SNAPSHOT"
+version = "unspecified"
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
-    }
+kotlin {
+    jvmToolchain(21)
 }
 
 repositories {
@@ -18,9 +16,12 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":common"))
+    implementation(platform(libs.spring.cloud.alibaba.dependencies))
+    implementation(libs.spring.cloud.alibaba.nacos)
     implementation(platform(libs.spring.cloud.dependencies))
-    implementation(libs.spring.cloud.loadbalancer)
     implementation(platform(libs.spring.boot.dependencies))
+    implementation(libs.spring.boot.configuration)
     implementation(libs.spring.boot.validation)
     implementation(libs.spring.boot.webflux)
     implementation(libs.jackson.kotlin)
@@ -32,12 +33,6 @@ dependencies {
     testImplementation(libs.reactor.test)
     testImplementation(libs.kotlin.test.junit5)
     testRuntimeOnly(libs.junit)
-}
-
-kotlin {
-    compilerOptions {
-        freeCompilerArgs.addAll("-Xjsr305=strict")
-    }
 }
 
 tasks.withType<Test> {

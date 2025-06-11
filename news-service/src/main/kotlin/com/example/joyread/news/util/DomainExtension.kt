@@ -1,5 +1,6 @@
 package com.example.joyread.news.util
 
+import com.example.joyread.common.domain.dto.NewsDetailDTO
 import com.example.joyread.common.util.toEpochMilliStr
 import com.example.joyread.news.domain.po.Block.ParagraphBlock
 import com.example.joyread.news.domain.po.NewsDetailPO
@@ -14,3 +15,5 @@ fun NewsDetailPO.asPopularNewsVO() = NewsTitleVO(id, title)
 
 fun NewsPO.asNewsVO(amendContent: List<ParagraphBlock>? = null) =
     NewsVO(title, publishTime.toEpochMilliStr(), view, source, writers, amendContent ?: content)
+
+fun NewsDetailPO.asNewsDetailDTO() = NewsDetailDTO(id, title, publishTime, view, source, writers, coverImgFilename)

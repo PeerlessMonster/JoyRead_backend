@@ -1,0 +1,19 @@
+server:
+  port: 8083
+spring:
+  application:
+    name: search-service
+  cloud:
+    nacos:
+      server-addr: localhost:8848
+  data:
+    dify:
+      host: localhost
+      port: 80
+      dataset:
+        id: 223852e4-0c97-4cd5-af9a-1333f6901dc2
+        API-Key: dataset-************************
+springdoc:
+#  api-docs:
+#    enabled: true
+  packages-to-scan: com.example.joyread.search.controller
